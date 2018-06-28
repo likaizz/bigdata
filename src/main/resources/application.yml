@@ -1,0 +1,13 @@
+server:
+    tomcat:
+      uri-encoding: utf-8
+spring:
+    data:
+        neo4j:
+#             http协议报错
+#            uri: http://192.168.1.120:7474
+            uri: bolt://192.168.1.120:7687
+            username: neo4j
+            password: root
+
+
