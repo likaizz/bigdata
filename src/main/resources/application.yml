@@ -1,0 +1,29 @@
+server:
+    tomcat:
+      uri-encoding: utf-8
+spring:
+  security:
+    user:
+      name: root
+      password: root
+  data:
+    neo4j:
+      uri: bolt://192.168.1.120:7687
+      username: neo4j
+      password: root
+    mongodb:
+      host: localhost
+      port: 27017
+      database: test
+
+mybatis:
+  configuration:
+    mapUnderscoreToCamelCase: true
+mybatis-plus:
+  configuration:
+    jdbc-type-for-null: 'null' #注意：单引号
+
+
+
+
+
