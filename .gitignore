@@ -1,0 +1,5 @@
+/.idea
+/target
+/transaction-logs
+/bigdata.iml
+*.iml
