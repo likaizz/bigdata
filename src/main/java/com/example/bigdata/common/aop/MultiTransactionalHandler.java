@@ -14,13 +14,13 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import java.lang.reflect.Method;
 
-//@Aspect
-//@Component
+@Aspect
+@Component
 public class MultiTransactionalHandler {
 //	@Pointcut("execution(* com.example.bigdata.service.*(..)) && @annotation(com.example.bigdata.common.annotation.MultiTransactional)")
 //	public void controllerMethodPointcut(){}
 
-    @Around("execution(* com.example.bigdata.service.*(..)) && @annotation(com.example.bigdata.common.annotation.MultiTransactional)")
+    @Around("execution(* com.example.bigdata.service..*(..))&& @annotation(com.example.bigdata.common.annotation.MultiTransactional )")//
     public Object test(ProceedingJoinPoint pjp)
             throws Throwable {
 //        Signature signature=pjp.getSignature();

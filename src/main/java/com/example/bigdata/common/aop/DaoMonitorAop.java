@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 
-//@Component
-//@Aspect
+@Component
+@Aspect
 public class DaoMonitorAop {
 
         @Around("execution(* com.example.bigdata.dao.oracle.OraMyMapper.*(..))")
