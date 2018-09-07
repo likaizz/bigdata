@@ -6,7 +6,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
     @GetMapping("/hello")
-    public String hello(){
-        return "hello";
+    public String hello() throws InterruptedException {
+        String threadName=Thread.currentThread().getName();
+        System.out.println(threadName+":invokeMetod");
+//        if(Math.random()<0.75)throw new RuntimeException("李凯myException");
+        Thread.sleep(10000);
+        System.out.println("invokeMetod成功");
+        return "李凯hello";
     }
 }

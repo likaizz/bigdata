@@ -10,6 +10,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -39,9 +41,12 @@ public class OracleConfig {
 //        Properties properties=new Properties();
 //        properties.setProperty("mapUnderscoreToCamelCase","true");
 //        bean.setConfigurationProperties(properties);
-        org.apache.ibatis.session.Configuration configuration=new org.apache.ibatis.session.Configuration();
-        configuration.setMapUnderscoreToCamelCase(true);
-        bean.setConfiguration(configuration);
+//        org.apache.ibatis.session.Configuration configuration=new org.apache.ibatis.session.Configuration();
+//        configuration.setMapUnderscoreToCamelCase(true);
+//        bean.setConfiguration(configuration);
+
+        bean.setConfigLocation(new ClassPathResource("mybatis.xml"));
+//        bean.setConfigLocation(new Re"");
         //添加XML目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {

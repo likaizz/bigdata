@@ -1,7 +1,13 @@
 server:
     tomcat:
       uri-encoding: utf-8
+
 spring:
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
   security:
     user:
       name: root
@@ -15,14 +21,18 @@ spring:
       host: localhost
       port: 27017
       database: test
+  jta:
+    narayana:
+      log-dir:
 
 mybatis:
-  configuration:
-    mapUnderscoreToCamelCase: true
-mybatis-plus:
-  configuration:
-    jdbc-type-for-null: 'null' #注意：单引号
-
+  config-location: classpath:mybatis.xml
+#  configuration:
+#      log-impl:   org.apache.ibatis.logging.stdout.StdOutImpl
+  type-handlers-package: com.example.bigdata.common.type
+#
+#logging:
+#  level: debug
 
 
 
