@@ -3,6 +3,7 @@ package com.example.bigdata.controller;
 import com.example.bigdata.AbstractTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,4 +42,12 @@ public class ControllerTest extends AbstractTest {
         sign.await();
 
     }
+
+    @Autowired
+    private KafkaTemplate kafkaTemplate;
+    @Test
+    public void testSendMsg(){
+        kafkaTemplate.send("testcase","hello world");
+    }
+
 }

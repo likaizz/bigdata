@@ -1,5 +1,6 @@
 server:
-    tomcat:
+  port: 8082
+  tomcat:
       uri-encoding: utf-8
 
 spring:
@@ -12,6 +13,20 @@ spring:
     user:
       name: root
       password: root
+  kafka:
+      consumer:
+        enable-auto-commit: true
+        group-id: bigdata
+        auto-offset-reset: latest
+        bootstrap-servers: localhost:9092
+      producer:
+        bootstrap-servers: localhost:9092
+        retries: 3
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#        max:
+#          request:
+#              size : 1024
+
   data:
     neo4j:
       uri: bolt://192.168.1.120:7687

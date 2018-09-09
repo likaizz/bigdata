@@ -7,11 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 @RestController
@@ -22,6 +26,10 @@ public class DemoController {
     private int batchSize;
     @Autowired
     private IDemoService service;
+    @PostConstruct
+    public void init(){
+        System.out.println("batchSize="+batchSize);
+    }
 
     @GetMapping("guid")
     public String guid() throws ExecutionException, InterruptedException {
@@ -33,4 +41,14 @@ public class DemoController {
     public int batchSize(){
         return batchSize;
     }
+
+    @Autowired
+    private KafkaTemplate<String,String> kafkaTemplate;
+    {
+    }
+    @RequestMapping("msg")
+    public void testSendMsg(String msg){
+        kafkaTemplate.send("testcase",msg);
+    }
+
 }
